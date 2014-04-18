@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Jaggery2.0.iml" filepath="$PROJECT_DIR$/Jaggery2.0.iml" />
+      <module fileurl="file://$PROJECT_DIR$/components/components.iml" filepath="$PROJECT_DIR$/components/components.iml" />
+      <module fileurl="file://$PROJECT_DIR$/server/distributions/distributions.iml" filepath="$PROJECT_DIR$/server/distributions/distributions.iml" />
+      <module fileurl="file://$PROJECT_DIR$/server/integration/integration.iml" filepath="$PROJECT_DIR$/server/integration/integration.iml" />
+      <module fileurl="file://$PROJECT_DIR$/components/jaggery-core/jaggery-core.iml" filepath="$PROJECT_DIR$/components/jaggery-core/jaggery-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/components/jaggery-core/org.jaggeryjs.jaggery.app.mgt/org.jaggeryjs.jaggery.app.mgt.iml" filepath="$PROJECT_DIR$/components/jaggery-core/org.jaggeryjs.jaggery.app.mgt/org.jaggeryjs.jaggery.app.mgt.iml" />
+      <module fileurl="file://$PROJECT_DIR$/components/jaggery-core/org.jaggeryjs.jaggery.app.mgt.ui/org.jaggeryjs.jaggery.app.mgt.ui.iml" filepath="$PROJECT_DIR$/components/jaggery-core/org.jaggeryjs.jaggery.app.mgt.ui/org.jaggeryjs.jaggery.app.mgt.ui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/components/jaggery-core/org.jaggeryjs.jaggery.core/org.jaggeryjs.jaggery.core.iml" filepath="$PROJECT_DIR$/components/jaggery-core/org.jaggeryjs.jaggery.core/org.jaggeryjs.jaggery.core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/components/jaggery-core/org.jaggeryjs.jaggery.deployer/org.jaggeryjs.jaggery.deployer.iml" filepath="$PROJECT_DIR$/components/jaggery-core/org.jaggeryjs.jaggery.deployer/org.jaggeryjs.jaggery.deployer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/components/jaggery-core/org.jaggeryjs.jaggery.tools/org.jaggeryjs.jaggery.tools.iml" filepath="$PROJECT_DIR$/components/jaggery-core/org.jaggeryjs.jaggery.tools/org.jaggeryjs.jaggery.tools.iml" />
+      <module fileurl="file://$PROJECT_DIR$/components/script-engine/org.jaggeryjs.scriptengine/org.jaggeryjs.scriptengine.iml" filepath="$PROJECT_DIR$/components/script-engine/org.jaggeryjs.scriptengine/org.jaggeryjs.scriptengine.iml" />
+      <module fileurl="file://$PROJECT_DIR$/components/script-engine/script-engine.iml" filepath="$PROJECT_DIR$/components/script-engine/script-engine.iml" />
+      <module fileurl="file://$PROJECT_DIR$/server/server.iml" filepath="$PROJECT_DIR$/server/server.iml" />
+    </modules>
+  </component>
+</project>
+

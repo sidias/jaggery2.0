@@ -1,0 +1,13 @@
+org/jaggeryjs/jaggery/core/parser/JaggeryParser.class
+org/jaggeryjs/jaggery/core/JaggeryFilter.class
+org/jaggeryjs/jaggery/core/plugins/WebAppFile.class
+org/jaggeryjs/jaggery/core/plugins/UploadedFile.class
+org/jaggeryjs/jaggery/core/manager/CommonManager.class
+org/jaggeryjs/jaggery/core/ScriptReader.class
+org/jaggeryjs/jaggery/core/manager/JaggerySecurityDomain.class
+org/jaggeryjs/jaggery/core/JaggeryCoreConstants.class
+org/jaggeryjs/jaggery/core/manager/WebAppManager.class
+org/jaggeryjs/jaggery/core/listeners/WebAppSessionListener.class
+org/jaggeryjs/jaggery/core/websocket/JaggeryWebSocketServlet.class
+org/jaggeryjs/jaggery/core/plugins/WebAppFileManager.class
+org/jaggeryjs/jaggery/core/JaggeryServlet.class

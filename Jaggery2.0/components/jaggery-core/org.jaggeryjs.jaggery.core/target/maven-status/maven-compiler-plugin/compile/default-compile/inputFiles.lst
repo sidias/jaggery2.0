@@ -1,0 +1,13 @@
+/home/buddhi/IdeaProjects/Jaggery2.0/components/jaggery-core/org.jaggeryjs.jaggery.core/src/main/java/org/jaggeryjs/jaggery/core/manager/WebAppManager.java
+/home/buddhi/IdeaProjects/Jaggery2.0/components/jaggery-core/org.jaggeryjs.jaggery.core/src/main/java/org/jaggeryjs/jaggery/core/JaggeryFilter.java
+/home/buddhi/IdeaProjects/Jaggery2.0/components/jaggery-core/org.jaggeryjs.jaggery.core/src/main/java/org/jaggeryjs/jaggery/core/ScriptReader.java
+/home/buddhi/IdeaProjects/Jaggery2.0/components/jaggery-core/org.jaggeryjs.jaggery.core/src/main/java/org/jaggeryjs/jaggery/core/JaggeryServlet.java
+/home/buddhi/IdeaProjects/Jaggery2.0/components/jaggery-core/org.jaggeryjs.jaggery.core/src/main/java/org/jaggeryjs/jaggery/core/listeners/WebAppSessionListener.java
+/home/buddhi/IdeaProjects/Jaggery2.0/components/jaggery-core/org.jaggeryjs.jaggery.core/src/main/java/org/jaggeryjs/jaggery/core/plugins/UploadedFile.java
+/home/buddhi/IdeaProjects/Jaggery2.0/components/jaggery-core/org.jaggeryjs.jaggery.core/src/main/java/org/jaggeryjs/jaggery/core/JaggeryCoreConstants.java
+/home/buddhi/IdeaProjects/Jaggery2.0/components/jaggery-core/org.jaggeryjs.jaggery.core/src/main/java/org/jaggeryjs/jaggery/core/manager/JaggerySecurityDomain.java
+/home/buddhi/IdeaProjects/Jaggery2.0/components/jaggery-core/org.jaggeryjs.jaggery.core/src/main/java/org/jaggeryjs/jaggery/core/websocket/JaggeryWebSocketServlet.java
+/home/buddhi/IdeaProjects/Jaggery2.0/components/jaggery-core/org.jaggeryjs.jaggery.core/src/main/java/org/jaggeryjs/jaggery/core/plugins/WebAppFile.java
+/home/buddhi/IdeaProjects/Jaggery2.0/components/jaggery-core/org.jaggeryjs.jaggery.core/src/main/java/org/jaggeryjs/jaggery/core/manager/CommonManager.java
+/home/buddhi/IdeaProjects/Jaggery2.0/components/jaggery-core/org.jaggeryjs.jaggery.core/src/main/java/org/jaggeryjs/jaggery/core/parser/JaggeryParser.java
+/home/buddhi/IdeaProjects/Jaggery2.0/components/jaggery-core/org.jaggeryjs.jaggery.core/src/main/java/org/jaggeryjs/jaggery/core/plugins/WebAppFileManager.java
