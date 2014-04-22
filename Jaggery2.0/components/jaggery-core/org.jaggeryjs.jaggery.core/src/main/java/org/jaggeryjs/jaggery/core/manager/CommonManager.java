@@ -1,30 +1,30 @@
 package org.jaggeryjs.jaggery.core.manager;
 
+import jdk.nashorn.api.scripting.NashornException;
+import jdk.nashorn.internal.runtime.*;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.jaggeryjs.scriptengine.cache.CacheManager;
+import org.jaggeryjs.scriptengine.engine.JaggeryContext;
 import org.jaggeryjs.scriptengine.engine.NashornEngine;
 import org.jaggeryjs.scriptengine.exception.ScriptException;
 
-//import org.wso2.carbon.context.CarbonContext;
+import java.io.File;
+import java.io.IOException;
 
-/**
- * Shares the common functionality, of initialization of functions, and Host Objects
- */
 public class CommonManager {
-
-    private static final int BYTE_BUFFER_SIZE = 1024;
 
     private static final Log log = LogFactory.getLog(CommonManager.class);
 
     public static final String JAGGERY_URLS_MAP = "jaggery.urls.map";
-    public static final String JAGGERY_OUTPUT_STREAM = "jaggery.output.stream";
+    public static final String JAGGERY_CONTEXT = "engine.jaggeryContext";
 
-    public static final String HOST_OBJECT_NAME = "RhinoTopLevel";
+    private static final int SUCCESS = 0;
+    private static final int COMPILATION_ERROR = 101;
+    private static final int RUNTIME_ERROR = 102;
 
     private static CommonManager manager;
-
     private NashornEngine engine = null;
-    //private ModuleManager moduleManager = null;
 
     private CommonManager() throws ScriptException {
     }
@@ -41,124 +41,77 @@ public class CommonManager {
         return this.engine;
     }
 
-    /*public ModuleManager getModuleManager() {
-        return this.moduleManager;
-    }  */
-
-    /*public void initialize(String modulesDir, RhinoSecurityController securityController)
-            throws ScriptException {
-        this.engine = new NashornEngine(new CacheManager(null), new RhinoContextFactory(securityController));
-        this.moduleManager = new ModuleManager(modulesDir);
-        exposeDefaultModules(this.engine, this.moduleManager.getModules());
+    public void initialize() throws ScriptException{
+        this.engine = new NashornEngine(new CacheManager(null));
     }
 
-    public static void initContext(JaggeryContext context) throws ScriptException {
-        context.setEngine(manager.engine);
-        context.setScope(manager.engine.getRuntimeScope());
-        context.setTenantId(Integer.toString(CarbonContext.getCurrentContext().getTenantId()));
+    public final ScriptObject startEngine(Context context)throws IOException {
 
-        context.addProperty(Constants.JAGGERY_CORE_MANAGER, manager);
-        context.addProperty(Constants.JAGGERY_INCLUDED_SCRIPTS, new HashMap<String, Boolean>());
-        context.addProperty(Constants.JAGGERY_INCLUDES_CALLSTACK, new Stack<String>());
+        if(context == null) {
+
+        }
+        final ScriptObject global = context.createGlobal();
+        //final ScriptEnvironment env = context.getEnv();
+        //final List<String> files = env.getFiles();//how this env get files
+
+        return global;
     }
 
+    //param @args ignored
+    public int runScripts(final Context context, final ScriptObject global, final String fileName) throws IOException {
 
-
-
-
-
-    public static boolean isHTTP(String url) {
-        return url.matches("^[hH][tT][tT][pP][sS]?.*");
-    }
-
-
-
-    private static void exposeModule(Context cx, ScriptableObject object, JavaScriptModule module)
-            throws ScriptException {
-        for (JavaScriptHostObject hostObject : module.getHostObjects()) {
-            RhinoEngine.defineHostObject(object, hostObject);
-        }
-
-        for (JavaScriptMethod method : module.getMethods()) {
-            RhinoEngine.defineMethod(object, method);
-        }
-
-        for (JavaScriptScript script : module.getScripts()) {
-            script.getScript().exec(cx, object);
-        }
-    }
-
-    private static void exposeModule(RhinoEngine engine, JavaScriptModule module) {
-        for (JavaScriptHostObject hostObject : module.getHostObjects()) {
-            engine.defineHostObject(hostObject);
-        }
-
-        for (JavaScriptMethod method : module.getMethods()) {
-            engine.defineMethod(method);
-        }
-
-        for (JavaScriptScript script : module.getScripts()) {
-            engine.defineScript(script);
-        }
-    }
-
-    /**
-     * JaggeryMethod responsible of writing to the output stream
-     */
-    /*public static void print(Context cx, Scriptable thisObj, Object[] args, Function funObj)
-            throws ScriptException {
-        String functionName = "print";
-        JaggeryContext jaggeryContext = getJaggeryContext();
-
-        int argsCount = args.length;
-        if (argsCount != 1) {
-            HostObjectUtil.invalidNumberOfArgs("RhinoTopLevel", functionName, argsCount, false);
-        }
-        OutputStream out = (OutputStream) jaggeryContext.getProperty(CommonManager.JAGGERY_OUTPUT_STREAM);
-        if (args[0] instanceof StreamHostObject) {
-            InputStream in = ((StreamHostObject) args[0]).getStream();
-            try {
-                byte[] buffer = new byte[BYTE_BUFFER_SIZE];
-                int count;
-                while ((count = in.read(buffer)) != -1) {
-                    out.write(buffer, 0, count);
-                }
-                in.close();
-            } catch (IOException e) {
-                log.debug(e.getMessage(), e);
-                throw new ScriptException(e);
-            } finally {
-                if (in != null) {
-                    try {
-                        in.close();
-                    } catch (IOException e) {
-                        log.debug(e.getMessage(), e);
-                    }
-                }
+        final ScriptObject oldGlobal = Context.getGlobal();
+        final boolean globalChanged = (oldGlobal != global);
+        try{
+            if(globalChanged) {
+                Context.setGlobal(global);
             }
-        } else {
+            final ErrorManager errors = context.getErrorManager();
+            //loads jaggery core to current context.
+            //context.load(global, );
+
+            //for now just get the file and read it but later this file will be a string return from parser
+            //to get file to parser use Source.java class methods.
+
+            final File file = new File(fileName);
+            final ScriptFunction script = context.compileScript(new Source(fileName, file.toURI().toURL()), global);
+            if(script == null || errors.getNumberOfErrors() != 0) {
+                return COMPILATION_ERROR;
+            }
+
             try {
-                out.write(HostObjectUtil.serializeObject(args[0]).getBytes());
-            } catch (IOException e) {
-                log.debug(e.getMessage(), e);
-                throw new ScriptException(e);
+                apply(script, global);
+            } catch (final NashornException e) {
+                errors.error(e.toString());
+                if (context.getEnv()._dump_on_error) {
+                    e.printStackTrace(context.getErr());
+                }
+
+                return RUNTIME_ERROR;
+            }
+        } finally {
+            context.getOut().flush();
+            context.getErr().flush();
+            if(globalChanged) {
+                context.setGlobal(oldGlobal);
             }
         }
+        return SUCCESS;
     }
 
-    public static JaggeryContext getJaggeryContext() {
-        return (JaggeryContext) NashornEngine.getContextProperty(EngineConstants.JAGGERY_CONTEXT);
+    private Object apply(final ScriptFunction target, final Object self) {
+        return ScriptRuntime.apply(target, self);
     }
 
     public static void setJaggeryContext(JaggeryContext jaggeryContext) {
-        NashornEngine.putContextProperty(EngineConstants.JAGGERY_CONTEXT, jaggeryContext);
+        NashornEngine.putContextProperty(JAGGERY_CONTEXT, jaggeryContext);
     }
 
-    public static Map<String, Boolean> getIncludes(JaggeryContext jaggeryContext) {
-        return (Map<String, Boolean>) jaggeryContext.getProperty(Constants.JAGGERY_INCLUDED_SCRIPTS);
+    /*
+    * jaggery context can be use to load other properties to
+    * current global scope
+    * */
+     public static JaggeryContext getJaggeryContext() {
+        return (JaggeryContext)NashornEngine.getContextProperty(JAGGERY_CONTEXT);
     }
-
-    public static Stack<String> getCallstack(JaggeryContext jaggeryContext) {
-        return (Stack<String>) jaggeryContext.getProperty(Constants.JAGGERY_INCLUDES_CALLSTACK);
-    }*/
 }

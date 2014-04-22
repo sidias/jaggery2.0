@@ -1,11 +1,13 @@
 package org.jaggeryjs.scriptengine.engine;
 //no need of this class.nashorn has ScriptRuntime.property class
 
+import jdk.nashorn.internal.runtime.Property;
+
 public class JavaScriptProperty {
 
     private String name = null;
     private Object value = null;
-    private int attribute = 4;
+    private int attribute = Property.NOT_ENUMERABLE;
 
     public JavaScriptProperty(String name) {
         this.name = name;
@@ -27,11 +29,11 @@ public class JavaScriptProperty {
         this.value = value;
     }
 
-    public int getAttribute() {
-        return attribute;
-    }
-
     public void setAttribute(int attribute) {
         this.attribute = attribute;
+    }
+
+    public int getAttribute() {
+        return attribute;
     }
 }

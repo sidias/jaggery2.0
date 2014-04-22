@@ -67,19 +67,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="NashornEngine.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="NashornEngine.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/components/script-engine/org.jaggeryjs.scriptengine/src/main/java/org/jaggeryjs/scriptengine/engine/NashornEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="47" selection-start="1678" selection-end="1678" vertical-scroll-proportion="0.87884265" vertical-offset="108" max-vertical-offset="3654">
+            <state line="57" column="8" selection-start="2318" selection-end="2318" vertical-scroll-proportion="0.0" vertical-offset="108" max-vertical-offset="3654">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WebAppManager.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="118" column="35" selection-start="3811" selection-end="3811" vertical-scroll-proportion="0.0" vertical-offset="3186" max-vertical-offset="5004">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="web.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/distributions/src/main/webapp/WEB-INF/web.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="36" selection-start="803" selection-end="803" vertical-scroll-proportion="0.0" vertical-offset="28" max-vertical-offset="594">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WebAppManager.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/components/jaggery-core/org.jaggeryjs.jaggery.core/src/main/java/org/jaggeryjs/jaggery/core/manager/WebAppManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="62" column="18" selection-start="2399" selection-end="2399" vertical-scroll-proportion="0.0" vertical-offset="1116" max-vertical-offset="3204">
+            <state line="66" column="56" selection-start="2563" selection-end="2589" vertical-scroll-proportion="0.8833652" vertical-offset="528" max-vertical-offset="3006">
               <folding />
             </state>
           </provider>
@@ -88,18 +106,7 @@
       <file leaf-file-name="TomcatLauncher.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/distributions/src/main/java/launcher/TomcatLauncher.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="27" selection-start="581" selection-end="581" vertical-scroll-proportion="0.0" vertical-offset="41" max-vertical-offset="594">
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/jaggery-core/org.jaggeryjs.jaggery.core/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="21" selection-start="1691" selection-end="1691" vertical-scroll-proportion="0.0" vertical-offset="841" max-vertical-offset="1548">
+            <state line="21" column="27" selection-start="581" selection-end="581" vertical-scroll-proportion="0.0" vertical-offset="378" max-vertical-offset="666">
               <folding />
             </state>
           </provider>
@@ -138,7 +145,6 @@
         <option value="$PROJECT_DIR$/components/jaggery-core/org.jaggeryjs.jaggery.app.mgt/src/main/java/org/jaggeryjs/jaggery/app/mgt/JaggeryConstants.java" />
         <option value="$PROJECT_DIR$/components/pom.xml" />
         <option value="$PROJECT_DIR$/components/jaggery-core/org.jaggeryjs.jaggery.app.mgt/pom.xml" />
-        <option value="$PROJECT_DIR$/components/script-engine/org.jaggeryjs.scriptengine/pom.xml" />
         <option value="$PROJECT_DIR$/components/jaggery-core/pom.xml" />
         <option value="$PROJECT_DIR$/components/script-engine/org.jaggeryjs.scriptengine/src/main/java/org/jaggeryjs/scriptengine/EngineConstants.java" />
         <option value="$PROJECT_DIR$/components/script-engine/org.jaggeryjs.scriptengine/src/main/java/org/jaggeryjs/scriptengine/engine/JaggeryContext.java" />
@@ -155,11 +161,12 @@
         <option value="$PROJECT_DIR$/server/pom.xml" />
         <option value="$PROJECT_DIR$/server/distributions/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/components/jaggery-core/org.jaggeryjs.jaggery.core/src/main/java/org/jaggeryjs/jaggery/core/JaggeryFilter.java" />
-        <option value="$PROJECT_DIR$/components/jaggery-core/org.jaggeryjs.jaggery.core/pom.xml" />
         <option value="$PROJECT_DIR$/components/jaggery-core/org.jaggeryjs.jaggery.core/src/main/java/org/jaggeryjs/jaggery/core/manager/WebAppManager.java" />
-        <option value="$PROJECT_DIR$/components/script-engine/org.jaggeryjs.scriptengine/src/main/java/org/jaggeryjs/scriptengine/engine/NashornEngine.java" />
         <option value="$PROJECT_DIR$/server/distributions/src/main/java/launcher/TomcatLauncher.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/components/script-engine/org.jaggeryjs.scriptengine/pom.xml" />
+        <option value="$PROJECT_DIR$/components/script-engine/org.jaggeryjs.scriptengine/src/main/java/org/jaggeryjs/scriptengine/engine/NashornEngine.java" />
+        <option value="$PROJECT_DIR$/components/jaggery-core/org.jaggeryjs.jaggery.core/pom.xml" />
       </list>
     </option>
   </component>
@@ -180,16 +187,6 @@
           <option name="myItemId" value="jaggery-parent" />
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
         </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="jaggery-parent" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
         <PATH_ELEMENT>
           <option name="myItemId" value="Lifecycle" />
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$LifecycleNode" />
@@ -198,8 +195,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="64" />
-    <option name="y" value="-4" />
+    <option name="x" value="65" />
+    <option name="y" value="24" />
     <option name="width" value="1303" />
     <option name="height" value="773" />
   </component>
@@ -231,6 +228,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -425,6 +423,76 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="script-engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Jaggery2.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Jaggery2.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="script-engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="org.jaggeryjs.scriptengine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Jaggery2.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Jaggery2.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="script-engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="org.jaggeryjs.scriptengine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Jaggery2.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Jaggery2.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="jaggery-core" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -522,7 +590,6 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -541,7 +608,7 @@
     <property name="options.searchVisible" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../NashornOld" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="FullScreen" value="false" />
   </component>
   <component name="RecentsManager">
@@ -833,14 +900,18 @@
       <workItem from="1397741111651" duration="1513000" />
       <workItem from="1397790569843" duration="2182000" />
       <workItem from="1397794860190" duration="1296000" />
+      <workItem from="1398142298288" duration="10000" />
+      <workItem from="1398142310592" duration="101000" />
+      <workItem from="1398142413482" duration="2284000" />
+      <workItem from="1398145607595" duration="1114000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="150114000" />
+    <option name="totallyTimeSpent" value="153623000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="64" y="-4" width="1303" height="773" extended-state="6" />
+    <frame x="65" y="24" width="1303" height="773" extended-state="1" />
     <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -861,9 +932,9 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16334662" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.082071714" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24780877" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23426294" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.69404185" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1100,11 +1171,6 @@
         <state line="24" column="26" selection-start="809" selection-end="809" vertical-scroll-proportion="0.61490685" vertical-offset="54" max-vertical-offset="954" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/distributions/src/main/webapp/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="36" selection-start="803" selection-end="803" vertical-scroll-proportion="0.61490685" vertical-offset="216" max-vertical-offset="594" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/jaggery-core/org.jaggeryjs.jaggery.core/src/main/java/org/jaggeryjs/jaggery/core/JaggeryCoreConstants.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="69" selection-start="135" selection-end="149" vertical-scroll-proportion="0.22360249" vertical-offset="0" max-vertical-offset="522" />
@@ -1113,32 +1179,6 @@
     <entry file="file://$PROJECT_DIR$/components/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="67" column="38" selection-start="2353" selection-end="2353" vertical-scroll-proportion="0.1392405" vertical-offset="1129" max-vertical-offset="2790" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/script-engine/org.jaggeryjs.scriptengine/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="10" selection-start="555" selection-end="555" vertical-scroll-proportion="0.33189654" vertical-offset="157" max-vertical-offset="756" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/jaggery-core/org.jaggeryjs.jaggery.core/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="21" selection-start="1691" selection-end="1691" vertical-scroll-proportion="0.0" vertical-offset="841" max-vertical-offset="1548">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/jaggery-core/org.jaggeryjs.jaggery.core/src/main/java/org/jaggeryjs/jaggery/core/manager/WebAppManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="18" selection-start="2399" selection-end="2399" vertical-scroll-proportion="0.0" vertical-offset="576" max-vertical-offset="3006">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="118" column="35" selection-start="3811" selection-end="3811" vertical-scroll-proportion="0.52983725" vertical-offset="1831" max-vertical-offset="5004">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/distributions/pom.xml">
@@ -1151,15 +1191,48 @@
     <entry file="file://$PROJECT_DIR$/server/distributions/src/main/java/launcher/TomcatLauncher.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="21" column="27" selection-start="581" selection-end="581" vertical-scroll-proportion="0.0" vertical-offset="41" max-vertical-offset="594">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/jaggery-core/org.jaggeryjs.jaggery.core/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="79" column="0" selection-start="2557" selection-end="2557" vertical-scroll-proportion="0.0" vertical-offset="923" max-vertical-offset="1566">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/script-engine/org.jaggeryjs.scriptengine/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="26" selection-start="969" selection-end="969" vertical-scroll-proportion="0.0" vertical-offset="49" max-vertical-offset="756">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/distributions/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="36" selection-start="803" selection-end="803" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="594">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="118" column="35" selection-start="3811" selection-end="3811" vertical-scroll-proportion="0.0" vertical-offset="3186" max-vertical-offset="5004">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/components/script-engine/org.jaggeryjs.scriptengine/src/main/java/org/jaggeryjs/scriptengine/engine/NashornEngine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="47" selection-start="1678" selection-end="1678" vertical-scroll-proportion="0.87884265" vertical-offset="108" max-vertical-offset="3654">
+        <state line="57" column="8" selection-start="2318" selection-end="2318" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3654">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/jaggery-core/org.jaggeryjs.jaggery.core/src/main/java/org/jaggeryjs/jaggery/core/manager/WebAppManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="66" column="56" selection-start="2563" selection-end="2589" vertical-scroll-proportion="0.8833652" vertical-offset="528" max-vertical-offset="3006">
           <folding />
         </state>
       </provider>

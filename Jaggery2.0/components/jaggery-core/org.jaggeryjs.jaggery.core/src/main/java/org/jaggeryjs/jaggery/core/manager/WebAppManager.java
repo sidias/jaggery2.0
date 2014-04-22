@@ -1,9 +1,15 @@
 package org.jaggeryjs.jaggery.core.manager;
 
+import jdk.nashorn.internal.runtime.Context;
+import jdk.nashorn.internal.runtime.ScriptFunction;
+import jdk.nashorn.internal.runtime.ScriptObject;
+import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.jaggeryjs.scriptengine.engine.NashornEngine;
+import org.jaggeryjs.scriptengine.exception.ScriptException;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
@@ -51,21 +57,49 @@ public class WebAppManager {
 
         InputStream inputStream = null;
         OutputStream outputStream = null;
-        String scriptPath = /*getScriptPath(request)*/"/home/buddhi/Documents/buddhi.js" ;
+        NashornEngine engine;
+        //String scriptPath = getScriptPath(request)/*"/home/buddhi/Documents/buddhi.js"*/ ;
+        Context cx = null;
+        ScriptFunction function = null;
 
-        outputStream = response.getOutputStream();
-        inputStream = request.getServletContext().getResourceAsStream(scriptPath);
+        try {
+            outputStream = response.getOutputStream();
+            function = (ScriptFunction)request.getServletContext().getAttribute(
+                    SERVE_FUNCTION_JAGGERY
+            );
+            String scriptPath = getScriptPath(request);
+            inputStream = request.getServletContext().getResourceAsStream(scriptPath);
+            engine = CommonManager.getInstance().getEngine();
+            cx = engine.makeContext(inputStream, outputStream, outputStream);
+            ScriptObject global = CommonManager.getInstance().startEngine(cx);
+            CommonManager.getInstance().runScripts(cx, global, scriptPath);
 
-        /*if(inputStream == null) {
-            System.out.print("6666666666666666666666666666666666666666666666666666666666666666666666666");
-            response.sendError(HttpServletResponse.SC_NOT_FOUND, request.getRequestURI());
-            return;
-        }       */
-
-        //access this engine class throug common manager using singlton pattern
-        NashornEngine engine = new NashornEngine();
-        engine.run(System.in, outputStream, outputStream);
+        } catch (ScriptException e) {
+            String msg = e.getMessage();
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
+                    msg);
+        } finally {
+            NashornEngine.exitContext(cx);
+        }
     }
+
+    private static String getNormalizedScriptPath(String[] keys) {
+        return "/".equals(keys[1]) ? keys[2] : keys[1] + keys[2];
+    }
+
+    public static void deploy(org.apache.catalina.Context context) throws ScriptException {
+        ServletContext ctx = context.getServletContext();
+        Context cx = Context.getContext();
+
+
+    }
+
+    public static void undeploy(org.apache.catalina.Context context) {}
+
+
+
+
+
 
     private static String getScriptPath(HttpServletRequest request) {
         String url = request.getServletPath();
@@ -129,44 +163,26 @@ public class WebAppManager {
         }
         return null;
     }
+    /*
+    protected static ScriptCachingContext getScriptCachingContext(HttpServletRequest request, String scriptPath)
+            throws ScriptException {
 
-    /*public static NashornEngine getEngine() throws ScriptException {}
+    }  */
 
-    public static void print() throws ScriptException{}
-
-    public static ScriptObject executeScript() throws ScriptException{}
-
-    public static String getNormalizedScriptPath() {}
-
-    public static JaggeryContext sharedJaggeryContext() {}
-
-    public static JaggeryContext clonedJaggeryContext() {}
-
-    public static void deploy() throws ScriptException() {}
-
-    public static void undeploy() {}
-
-
-
-    public static String getScriptPath() {}
-
-    private static String resolveScriptPath() {}
-
-    private static String getPath() {}
-
-    private static void definePrperties() {}
-
-    private static JaggeryContext createJaggeryContext() {}
-
-    protected static ScriptCachingContext getScriptCachingContext() throws ScriptException {}
-
-    public static String[] getKeys() {}
-
-    public static long getScriptLastModified() throws ScriptException{}
-
-    private static String canonicalURI() {}
-
-    private static boolean isPathSeparator() {}
-
-    public static boolean isIsWebSocket() {}   */
+    public static String[] getKeys(String context, String parent, String scriptPath) {
+        String path;
+        String normalizedScriptPath;
+        context = context.equals("") ? "/" : context;
+        normalizedScriptPath = scriptPath.startsWith("/") ?
+                FilenameUtils.normalize(scriptPath, true) :
+                FilenameUtils.normalize(FilenameUtils.getFullPath(parent) + scriptPath, true);
+        path = FilenameUtils.getFullPath(normalizedScriptPath);
+        path = path.equals("/") ? path : path.substring(0, path.length() - 1);
+        normalizedScriptPath = "/" + FilenameUtils.getName(normalizedScriptPath);
+        return new String[] {
+                context,
+                path,
+                normalizedScriptPath
+        };
+    }
 }

@@ -19,7 +19,7 @@ public class TomcatLauncher {
             webPort = "8080";
         }
 
-        tomcat.setPort(8566);
+        tomcat.setPort(8568);
 
         //change this to work form  any dir.look for more examples
         tomcat.addWebapp("/buddhi", new File(webappDir).getAbsolutePath());

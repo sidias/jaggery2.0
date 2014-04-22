@@ -1,0 +1,2 @@
+
+exports.age = 35;
