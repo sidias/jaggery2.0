@@ -53,6 +53,7 @@ public class WebAppManager {
 
     public static void execute(HttpServletRequest request, HttpServletResponse response) throws
             IOException, ServletException {
+        System.out.print("*********************************************************************************");
 
         InputStream inputStream = null;
         OutputStream outputStream = null;
