@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.security.PrivilegedActionException;
 import java.util.*;
 
 public class WebAppManager {
@@ -33,7 +34,7 @@ public class WebAppManager {
 
     private static final String DEFAULT_CHAR_ENCODING = "UTF-8";
 
-    //public static final String JAGGERY_MODULES_DIR = "modules";
+    public static final String JAGGERY_MODULES_DIR = "modules";
 
     public static final String WS_REQUEST_PATH = "requestURI";
 
@@ -49,15 +50,30 @@ public class WebAppManager {
 
     private static boolean isWebSocket = false;
 
-    static {}
+    //edit this block
+    static {
+        try {
+            //String jaggeryDir = System.getProperty("jaggery.home");
+            //if(jaggeryDir == null ) {
+               // throw new ScriptException("Unable to find jaggery.home system properties");
+            //}
+
+            //String moduleDir = jaggeryDir + File.separator + JAGGERY_MODULES_DIR;
+            String moduleDir = "";
+            CommonManager.getInstance().initialize(moduleDir);
+        } catch (ScriptException e) {
+            e.printStackTrace();
+        }
+    }
 
     public static void execute(HttpServletRequest request, HttpServletResponse response) throws
             IOException, ServletException {
+        System.out.print("*********************************************************************************");
 
         InputStream inputStream = null;
         OutputStream outputStream = null;
         NashornEngine engine;
-        //String scriptPath = getScriptPath(request)/*"/home/buddhi/Documents/buddhi.js"*/ ;
+        //String scriptPath = getScriptPath(request) ;
         Context cx = null;
         ScriptFunction function = null;
 
@@ -69,16 +85,20 @@ public class WebAppManager {
             String scriptPath = getScriptPath(request);
             inputStream = request.getServletContext().getResourceAsStream(scriptPath);
             engine = CommonManager.getInstance().getEngine();
-            cx = engine.makeContext(inputStream, outputStream, outputStream);
+            cx = engine.makeContext(System.in, outputStream, outputStream);
             ScriptObject global = CommonManager.getInstance().startEngine(cx);
+
+            //change here
+            //scriptPath ="/home/buddhi/Documents/buddhi.js";
+            scriptPath = "/home/buddhi/Desktop/jaggery-0.9.0-SNAPSHOT/apps/coffeeshop/index.jag";
             CommonManager.getInstance().runScripts(cx, global, scriptPath);
 
         } catch (ScriptException e) {
             String msg = e.getMessage();
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
                     msg);
-        } finally {
-            NashornEngine.exitContext(cx);
+        } catch (PrivilegedActionException e) {
+            e.printStackTrace();
         }
     }
 
@@ -94,11 +114,6 @@ public class WebAppManager {
     }
 
     public static void undeploy(org.apache.catalina.Context context) {}
-
-
-
-
-
 
     private static String getScriptPath(HttpServletRequest request) {
         String url = request.getServletPath();
