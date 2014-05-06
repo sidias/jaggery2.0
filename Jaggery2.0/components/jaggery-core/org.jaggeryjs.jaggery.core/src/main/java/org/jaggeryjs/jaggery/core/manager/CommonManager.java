@@ -1,35 +1,47 @@
 package org.jaggeryjs.jaggery.core.manager;
 
-import jdk.nashorn.api.scripting.NashornException;
 import jdk.nashorn.internal.runtime.*;
+import jdk.nashorn.internal.runtime.regexp.joni.exception.InternalException;
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.jaggeryjs.jaggery.core.JaggeryCoreConstants;
+import org.jaggeryjs.scriptengine.parser.JaggeryParser;
+import org.jaggeryjs.scriptengine.EngineConstants;
 import org.jaggeryjs.scriptengine.cache.CacheManager;
 import org.jaggeryjs.scriptengine.engine.JaggeryContext;
 import org.jaggeryjs.scriptengine.engine.NashornEngine;
 import org.jaggeryjs.scriptengine.exception.ScriptException;
 
-import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.nio.file.*;
+import java.security.AccessController;
+import java.security.PrivilegedActionException;
+import java.security.PrivilegedExceptionAction;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Stack;
 
 public class CommonManager {
 
     private static final Log log = LogFactory.getLog(CommonManager.class);
 
     public static final String JAGGERY_URLS_MAP = "jaggery.urls.map";
-    public static final String JAGGERY_CONTEXT = "engine.jaggeryContext";
+    public static final String JAGGERY_OUTPUT_STREAM = "jaggery.output.stream";
 
-    private static final int SUCCESS = 0;
-    private static final int COMPILATION_ERROR = 101;
-    private static final int RUNTIME_ERROR = 102;
+    private static final String JAGGERY_CORE_LIB = "resources/libs/";
 
     private static CommonManager manager;
     private NashornEngine engine = null;
+    //----------------set this module dir as a global property to current global.
+    //then scripts can jaggery.js file can access that property.
+    private String moduleDir;
 
     private CommonManager() throws ScriptException {
     }
 
-    // singleton pattern
     public static CommonManager getInstance() throws ScriptException {
         if (manager == null) {
             manager = new CommonManager();
@@ -41,77 +53,122 @@ public class CommonManager {
         return this.engine;
     }
 
-    public void initialize() throws ScriptException{
-        this.engine = new NashornEngine(new CacheManager(null));
+
+    public void initialize(String moduleDir) throws ScriptException, PrivilegedActionException, IOException {
+        this.engine = nashornEngineInstance();
+        this.moduleDir = moduleDir;
+
+        //read core modules and set them as global property.
+        //meka wenathanaka karanna.
+       // corelibUpdate();
     }
 
-    public final ScriptObject startEngine(Context context)throws IOException {
+    /**
+     * Create a new nashornEngine initialized with a CacheManager.
+     *
+     * @return newly created NashornEngine.
+     * */
+    private NashornEngine nashornEngineInstance() throws PrivilegedActionException, IOException, ScriptException {
+        checkConfigPermission();
+        return new NashornEngine(new CacheManager(null), getAppClassLoader());
+    }
 
+    public static void initContext(JaggeryContext context) throws
+            ScriptException {
+        context.setEngine(manager.engine);
+        context.setScope(manager.engine.getRuntimeScope());
+        //context.setTenantId(Integer.toString());
+
+        context.addProperty(JaggeryCoreConstants.JAGGERY_CORE_MANAGER, manager);
+        context.addProperty(JaggeryCoreConstants.JAGGERY_INCLUDED_SCRIPTS, new HashMap<String, Boolean>());
+        context.addProperty(JaggeryCoreConstants.JAGGERY_INCLUDES_CALLSTACK, new Stack<String>());
+    }
+
+    /*
+    public final ScriptObject startEngine(Context context)throws IOException {
         if(context == null) {
 
         }
         final ScriptObject global = context.createGlobal();
-        //final ScriptEnvironment env = context.getEnv();
-        //final List<String> files = env.getFiles();//how this env get files
-
         return global;
     }
+    */
 
-    //param @args ignored
-    public int runScripts(final Context context, final ScriptObject global, final String fileName) throws IOException {
 
-        final ScriptObject oldGlobal = Context.getGlobal();
-        final boolean globalChanged = (oldGlobal != global);
-        try{
-            if(globalChanged) {
-                Context.setGlobal(global);
-            }
-            final ErrorManager errors = context.getErrorManager();
-            //loads jaggery core to current context.
-            //context.load(global, );
-
-            //for now just get the file and read it but later this file will be a string return from parser
-            //to get file to parser use Source.java class methods.
-
-            final File file = new File(fileName);
-            final ScriptFunction script = context.compileScript(new Source(fileName, file.toURI().toURL()), global);
-            if(script == null || errors.getNumberOfErrors() != 0) {
-                return COMPILATION_ERROR;
-            }
-
-            try {
-                apply(script, global);
-            } catch (final NashornException e) {
-                errors.error(e.toString());
-                if (context.getEnv()._dump_on_error) {
-                    e.printStackTrace(context.getErr());
-                }
-
-                return RUNTIME_ERROR;
-            }
-        } finally {
-            context.getOut().flush();
-            context.getErr().flush();
-            if(globalChanged) {
-                context.setGlobal(oldGlobal);
-            }
-        }
-        return SUCCESS;
+    private void initLibs(ScriptObject global) throws IllegalAccessException, InstantiationException {
+        global.addOwnProperty("core", Property.NOT_ENUMERABLE, "buddhi");
     }
 
-    private Object apply(final ScriptFunction target, final Object self) {
-        return ScriptRuntime.apply(target, self);
+    /**
+    * convert inputStream to String
+    *
+    * @param is     inputStream to be converted
+    * */
+    private String isToString(InputStream is) throws IOException {
+        String string = IOUtils.toString(is, "UTF-8");
+        return string;
+    }
+
+    public static JaggeryContext getJaggeryContext() {
+        return (JaggeryContext)NashornEngine.getContextProperty(EngineConstants.JAGGERY_CONTEXT);
     }
 
     public static void setJaggeryContext(JaggeryContext jaggeryContext) {
-        NashornEngine.putContextProperty(JAGGERY_CONTEXT, jaggeryContext);
+        NashornEngine.putContextProperty(EngineConstants.JAGGERY_CONTEXT, jaggeryContext);
     }
 
-    /*
-    * jaggery context can be use to load other properties to
-    * current global scope
+    /**
+    * read each core js modules in resource/lib folder, return them as InputStream
+    *
+    * @param    resource    string path to resource
     * */
-     public static JaggeryContext getJaggeryContext() {
-        return (JaggeryContext)NashornEngine.getContextProperty(JAGGERY_CONTEXT);
+    private InputStream resourcetoStream(final String resource) throws PrivilegedActionException {
+        InputStream libScripts = AccessController.doPrivileged(
+                new PrivilegedExceptionAction<InputStream>() {
+                    @Override
+                    public InputStream run() throws Exception {
+                        return CommonManager.class.getResourceAsStream(resource);
+                    }
+                }
+        );
+        return libScripts;
+    }
+
+    Source source;
+
+    public void corelibUpdate() throws PrivilegedActionException {
+        Path dir = Paths.get("/home/buddhi/IdeaProjects/Jaggery2.0/modules"); //set dir correctly -----------
+        try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir)) {
+            for(Path file : stream) {
+                System.out.println(file.getFileName());
+
+                //add new file watcher here---------------------------------------------------------
+                //cache this scripts sources.
+                source = new Source(String.valueOf(file.getFileName()), file.toFile());
+            }
+        } catch (IOException | DirectoryIteratorException x) {
+            System.out.println(x);
+        }
+    }
+
+    public static Map<String, Boolean> getIncludes(JaggeryContext context) {
+        return (Map<String, Boolean>)context.getProperty(JaggeryCoreConstants.JAGGERY_INCLUDED_SCRIPTS);
+    }
+
+    public static Stack<String> getCallStack(JaggeryContext context) {
+        return (Stack<String>)context.getProperty(JaggeryCoreConstants.JAGGERY_INCLUDES_CALLSTACK);
+    }
+
+    private static void checkConfigPermission() {
+        final SecurityManager sm = System.getSecurityManager();
+        if(sm != null) {
+            sm.checkPermission(new RuntimePermission(Context.NASHORN_SET_CONFIG));
+        }
+    }
+
+    private static ClassLoader getAppClassLoader() {
+        ClassLoader ccl = Thread.currentThread().getContextClassLoader();
+        return (ccl == null) ? CommonManager.class.getClassLoader() : ccl;
     }
 }
+

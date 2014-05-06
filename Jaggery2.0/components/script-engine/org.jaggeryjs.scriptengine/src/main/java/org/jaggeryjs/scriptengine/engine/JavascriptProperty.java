@@ -3,13 +3,13 @@ package org.jaggeryjs.scriptengine.engine;
 
 import jdk.nashorn.internal.runtime.Property;
 
-public class JavaScriptProperty {
+public class JavascriptProperty {
 
     private String name = null;
     private Object value = null;
     private int attribute = Property.NOT_ENUMERABLE;
 
-    public JavaScriptProperty(String name) {
+    public JavascriptProperty(String name) {
         this.name = name;
     }
 

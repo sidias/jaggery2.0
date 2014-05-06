@@ -26,10 +26,37 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>generate resources</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>src/main/resources/libs</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>../../../modules</directory>
+                                    <includes>
+                                        <include>**/*.js</include>
+                                        <include>**/*.jag</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
     <dependencies>
+        <!--
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-core</artifactId>
@@ -46,18 +73,12 @@
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
             <version>8.0.5</version>
-        </dependency>
+        </dependency>     -->
 
         <dependency>
             <groupId>nashorn.wso2</groupId>
             <artifactId>js</artifactId>
             <version>0.1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>asm</groupId>
-            <artifactId>asm</artifactId>
-            <version>20041228.180559</version>
         </dependency>
 
         <dependency>
@@ -78,4 +99,6 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
+
+
 </project>

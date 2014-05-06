@@ -4,6 +4,7 @@ import org.jaggeryjs.jaggery.core.manager.WebAppManager;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.jaggeryjs.scriptengine.exception.ScriptException;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -22,36 +23,64 @@ public class JaggeryServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        WebAppManager.execute(request, response);
+        try {
+            WebAppManager.execute(request, response);
+        } catch (ScriptException e) {
+            e.printStackTrace();
+        }
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        WebAppManager.execute(request, response);
+        try {
+            WebAppManager.execute(request, response);
+        } catch (ScriptException e) {
+            e.printStackTrace();
+        }
     }
 
     protected void doHead(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        WebAppManager.execute(request, response);
+        try {
+            WebAppManager.execute(request, response);
+        } catch (ScriptException e) {
+            e.printStackTrace();
+        }
     }
 
     protected void doPut(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        WebAppManager.execute(request, response);
+        try {
+            WebAppManager.execute(request, response);
+        } catch (ScriptException e) {
+            e.printStackTrace();
+        }
     }
 
     protected void doDelete(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        WebAppManager.execute(request, response);
+        try {
+            WebAppManager.execute(request, response);
+        } catch (ScriptException e) {
+            e.printStackTrace();
+        }
     }
 
     protected void doOptions(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        WebAppManager.execute(request, response);
+        try {
+            WebAppManager.execute(request, response);
+        } catch (ScriptException e) {
+            e.printStackTrace();
+        }
     }
 
     protected void doTrace(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        WebAppManager.execute(request, response);
+        try {
+            WebAppManager.execute(request, response);
+        } catch (ScriptException e) {
+            e.printStackTrace();
+        }
     }
 }

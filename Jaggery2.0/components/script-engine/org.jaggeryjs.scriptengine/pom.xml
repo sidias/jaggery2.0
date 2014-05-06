@@ -32,6 +32,7 @@
             <artifactId>commons-httpclient</artifactId>
             <version>3.1.0.wso2v2</version>
         </dependency>
+
     </dependencies>
 
 </project>

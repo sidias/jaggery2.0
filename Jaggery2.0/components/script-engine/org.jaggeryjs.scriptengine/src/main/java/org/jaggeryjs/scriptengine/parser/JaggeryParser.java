@@ -1,4 +1,4 @@
-package org.jaggeryjs.jaggery.core.parser;
+package org.jaggeryjs.scriptengine.parser;
 
 import org.jaggeryjs.scriptengine.exception.ScriptException;
 

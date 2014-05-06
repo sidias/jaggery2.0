@@ -3,7 +3,7 @@
 package org.jaggeryjs.jaggery.core;
 
 import org.jaggeryjs.scriptengine.exception.ScriptException;
-import org.jaggeryjs.jaggery.core.parser.JaggeryParser;
+import org.jaggeryjs.scriptengine.parser.JaggeryParser;
 
 import java.io.*;
 
