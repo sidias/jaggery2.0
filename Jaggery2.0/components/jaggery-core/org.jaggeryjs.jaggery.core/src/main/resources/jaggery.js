@@ -1,17 +1,17 @@
 var Context 		= Java.type("jdk.nashorn.internal.runtime.Context");
 var ScriptRuntime 	= Java.type("jdk.nashorn.internal.runtime.ScriptRuntime");
-var Source 			= Java.type("jdk.nashorn.internal.runtime.Source");
-var File            = Java.type("java.io.File");
-var Files           = Java.type("java.nio.file.Files");
-var Paths           = Java.type("java.nio.file.Paths");
-var ManagementFactory = Java.type("java.lang.management.ManagementFactory");
+var Source 		= Java.type("jdk.nashorn.internal.runtime.Source");
+var File            	= Java.type("java.io.File");
+var Files           	= Java.type("java.nio.file.Files");
+var Paths           	= Java.type("java.nio.file.Paths");
+var ManagementFactory 	= Java.type("java.lang.management.ManagementFactory");
 //delete later
-var HashMap			= Java.type("java.util.HashMap");
+var HashMap		= Java.type("java.util.HashMap");
 var ByteOrder		= Java.type('java.nio.ByteOrder');
 var InetAddress		= Java.type('java.net.InetAddress');
-var Runtime			= Java.type('java.lang.Runtime');
-var Scanner			= Java.type('java.util.Scanner');
-var FileInputStream = Java.type('java.io.FileInputStream');
+var Runtime		= Java.type('java.lang.Runtime');
+var Scanner		= Java.type('java.util.Scanner');
+var FileInputStream 	= Java.type('java.io.FileInputStream');
 
 //use javascript object instead of hashmap.
 var property = new HashMap();
