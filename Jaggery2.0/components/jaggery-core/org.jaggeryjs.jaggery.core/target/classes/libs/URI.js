@@ -1,2 +1,0 @@
-
-exports.age = 35;
