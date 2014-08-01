@@ -140,14 +140,14 @@ public class CommonManager {
         Path dir = Paths.get("/home/buddhi/IdeaProjects/Jaggery2.0/modules"); //set dir correctly -----------
         try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir)) {
             for(Path file : stream) {
-                System.out.println(file.getFileName());
+
 
                 //add new file watcher here---------------------------------------------------------
                 //cache this scripts sources.
                 source = new Source(String.valueOf(file.getFileName()), file.toFile());
             }
         } catch (IOException | DirectoryIteratorException x) {
-            System.out.println(x);
+
         }
     }
 

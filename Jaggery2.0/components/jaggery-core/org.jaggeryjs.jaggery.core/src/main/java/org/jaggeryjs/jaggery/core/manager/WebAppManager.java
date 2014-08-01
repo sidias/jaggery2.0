@@ -83,8 +83,6 @@ public class WebAppManager {
             IOException, ServletException, ScriptException {
 
 
-        System.out.print("********************************--------");
-
         InputStream inputStream = null;
         OutputStream outputStream = null;
         NashornEngine engine = null;
@@ -169,7 +167,6 @@ public class WebAppManager {
         sctx.setAttribute(SHARED_JAGGERY_CONTEXT, sharedContext);
 
         //--------------------------------------------------------
-        System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% " +(JaggeryContext) sctx.getAttribute(SHARED_JAGGERY_CONTEXT) );
         return (JaggeryContext) sctx.getAttribute(SHARED_JAGGERY_CONTEXT);
     }
 
