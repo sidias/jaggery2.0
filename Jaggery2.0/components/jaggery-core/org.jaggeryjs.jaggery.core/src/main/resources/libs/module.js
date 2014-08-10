@@ -39,7 +39,7 @@ function Module(id, parent) {
 }
 
 //Module can be call as a function wherever is required;
-//use to call runMain through src/jaggery.js
+//use to call runMain through src/jaggery.js.
 module.exports = Module;
 
 //fullyPathCache is stored in a object user requirePath as a key against absolutePath of that user requirePath
@@ -144,7 +144,6 @@ function tryFile(filePath, realRequest) {
 };
 
 //try given filepath with all extensions
-//wrong here. check which try extension is using there are two try extensions
 function tryExtensions(absPath) {
 
 	var ext = ['.js'];//Object.keys(Module.extensions);
@@ -271,9 +270,9 @@ Module._load = function (request, parent) {
 //send resolve filename
 //module can be as following
 /*can be  	1.require(foo) - foo can be core module or module inside jaggery_module folder
- 			3../foo(with,without extension)
- 			4.../../foo(with,without extension)
- 			5.abs path(with,without extension)
+ 			2../foo(with,without extension)
+ 			3.../../foo(with,without extension)
+ 			4.abs path(with,without extension)
  */
 Module.resolveFileName = function (request, parent) {
 
@@ -301,7 +300,7 @@ Module.resolveFileName = function (request, parent) {
 	return false;
 };
 
-//set all possible paths to check.
+//set all possible paths to check.(eg : all possible jaggery_module paths)
 Module.resolvePaths = function (request, parent) {
 
 	//if request is abs

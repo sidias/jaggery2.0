@@ -68,7 +68,7 @@ public class NashornEngine {
             if(Context.DEBUG) {
                 e.printStackTrace();
             }
-            throw new ScriptException("initial script (jaggery.js) cannot be loaded");
+            throw new ScriptException("initial script (jaggery.js) load");
         }
     }
 
